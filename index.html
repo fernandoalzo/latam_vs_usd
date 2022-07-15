@@ -1,12 +1,127 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LATAM Vs USD</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.84.0">
+  <title>LATAM Vs USD</title>
+  <!-- Bootstrap core CSS -->
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="./css/pricing.css" rel="stylesheet">
+  <!-- chart style -->
+  <link rel="stylesheet" href="./css/chart_style.css">
 </head>
+
 <body>
-<script src="./main.js"></script>
+  <div class="container py-3">
+    <header>
+      <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+        <center>
+          <object data="./img/icons/co.svg" width="30" height="30"> </object>
+          <object data="./img/icons/mx.svg" width="30" height="30"> </object>
+          <object data="./img/icons/bz.svg" width="30" height="30"> </object>
+          <object data="./img/icons/gt.svg" width="30" height="30"> </object>
+          <object data="./img/icons/sv.svg" width="30" height="30"> </object>
+          <object data="./img/icons/hn.svg" width="30" height="30"> </object>
+          <object data="./img/icons/ni.svg" width="30" height="30"> </object>
+          <object data="./img/icons/cr.svg" width="30" height="30"> </object>
+          <object data="./img/icons/pa.svg" width="30" height="30"> </object>
+          <object data="./img/icons/ve.svg" width="30" height="30"> </object>
+          <object data="./img/icons/pe.svg" width="30" height="30"> </object>
+          <object data="./img/icons/bz.svg" width="30" height="30"> </object>
+          <object data="./img/icons/bo.svg" width="30" height="30"> </object>
+          <object data="./img/icons/py.svg" width="30" height="30"> </object>
+          <object data="./img/icons/cl.svg" width="30" height="30"> </object>
+          <object data="./img/icons/ar.svg" width="30" height="30"> </object>
+          <object data="./img/icons/uy.svg" width="30" height="30"> </object>
+          &nbsp&nbsp
+          <object data="./img/icons/puño.svg" width="30" height="30"> </object>
+          &nbsp&nbsp
+          <object data="./img/icons/us.svg" width="30" height="30"> </object>
+        </center>
+      </div>
+
+      <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <h1 class="display-4 fw-normal">LATAM Vs USD</h1>
+        <p class="fs-5 text-muted">Precio de las monedas latinas Vs el dolar gringo</p>
+      </div>
+    </header>
+
+    <main>
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">colombia</h4>
+            </div>
+            <div class="card-body">
+              <canvas id="chart_colombia"></canvas>
+              <h1 class="card-title pricing-card-title">$precio</h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li><span class="text-success">HIGH24HOUR_btc</span></li>
+                <li><span class="text-danger">LOW24HOUR_btc</span></li>
+                <li>VOLUME24HOUR_btc</li>
+                <li>MKTCAP_btc</li>
+              </ul>
+              <a href="https://finance.yahoo.com/quote/usdcop=x/" target="_blank">
+                <button type="button" class="w-100 btn btn-lg btn-outline-primary">Mas informacion</button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">mexico</h4>
+            </div>
+            <div class="card-body">
+              aqui deberia ir el grafico o la bandera por el moomento
+              <h1 class="card-title pricing-card-title">$precio</h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li><span class="text-success">HIGH24HOUR_eth</span></li>
+                <li><span class="text-danger">LOW24HOUR_eth</span></li>
+                <li>VOLUME24HOUR_eth</li>
+                <li>MKTCAP_eth</li>
+              </ul>
+              <a href="https://finance.yahoo.com/quote/usdMXN=x/" target="_blank">
+                <button type="button" class="w-100 btn btn-lg btn-outline-primary">Mas informacion</button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">belice</h4>
+            </div>
+            <div class="card-body">
+              aqui deberia ir el grafico o la bandera por el moomento
+              <h1 class="card-title pricing-card-title">$precio</h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li><span class="text-success">HIGH24HOUR_ada</span></li>
+                <li><span class="text-danger">LOW24HOUR_ada</span></li>
+                <li>VOLUME24HOUR_ada</li>
+                <li>MKTCAP_ada</li>
+              </ul>
+              <a href="https://finance.yahoo.com/quote/usdBZD=x/" target="_blank">
+                <button type="button" class="w-100 btn btn-lg btn-outline-primary">Mas informacion</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+      aqui poner algun mensaje
+    </footer>
+  </div>
+  <script src="./js/chart.js"></script>
+  <script src="./js/main.js"></script>
 </body>
+
 </html>
+Footer

@@ -1,4 +1,5 @@
 {
+"colombia" : {"moneda": "peso", "ISO" : "COP"},
 "mexico" : {"moneda" : "peso", "ISO" : "MXN"},
 "belice" : {"moneda" : "Dolar", "ISO" : "BZD"},
 "guatemala" : {"moneda" : "quetzal", "ISO" : "GTQ"},
@@ -7,7 +8,6 @@
 "nicaragua" : {"moneda" : "cordoba", "ISO" : "NIO"},
 "costa rica" : {"moneda" : "Colon Costarricense", "ISO" : "CRC"},
 "panama" :{"moneda" : "balboa", "ISO" : "PAB"},
-"colombia" : {"moneda": "peso", "ISO" : "COP"},
 "venezuela" : {"moneda" : "bolivar", "ISO" : "VES"},
 "guayanas" : {"moneda":"dolar guayanes", "ISO" : "GYD"},
 "peru" : {"moneda" : "sol", "ISO" : "PEN"},
