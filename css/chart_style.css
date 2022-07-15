@@ -1,4 +1,11 @@
 #chart_colombia {
     background-image: url(../img/colombia.png);
     background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+#chart_mexico {
+    background-image: url(../img/mexico.png);
+    background-size: 90%;
+    background-repeat: no-repeat;
   }
