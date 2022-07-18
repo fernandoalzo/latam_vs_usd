@@ -11,3 +11,115 @@
     background-position: center;
     background-repeat: no-repeat;
   }
+
+  #chart_belice {
+    background-image: url(../img/belice.png);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #chart_guatemala {
+    background-image: url(../img/guatemala.png);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #chart_salvador {
+    background-image: url(../img/salvador.png);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #chart_honduras {
+    background-image: url(../img/honduras.png);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #chart_nicaragua {
+    background-image: url(../img/nicaragua.png);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #chart_costa_rica {
+    background-image: url(../img/costa_rica.png);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #chart_panama {
+    background-image: url(../img/panama.png);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  #chart_venezuela {
+    background-image: url(../img/venezuela.png);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #chart_guayanas {
+    background-image: url(../img/guayana.png);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #chart_peru {
+    background-image: url(../img/peru.png);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #chart_brazil {
+    background-image: url(../img/brazil.png);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #chart_bolivia {
+    background-image: url(../img/bolivia.png);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #chart_paraguay {
+    background-image: url(../img/paraguay.png);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #chart_chile {
+    background-image: url(../img/chile.png);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #chart_argentina {
+    background-image: url(../img/argentina.png);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #chart_uruguay {
+    background-image: url(../img/uruguay.png);
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }

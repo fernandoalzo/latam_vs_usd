@@ -6,7 +6,7 @@
 "salvador" : {"moneda": "Dolar Gringo", "ISO" : "USD"},
 "honduras" : {"moneda" : "lempira", "ISO" : "HNL"},
 "nicaragua" : {"moneda" : "cordoba", "ISO" : "NIO"},
-"costa rica" : {"moneda" : "Colon Costarricense", "ISO" : "CRC"},
+"costa_rica" : {"moneda" : "Colon Costarricense", "ISO" : "CRC"},
 "panama" :{"moneda" : "balboa", "ISO" : "PAB"},
 "venezuela" : {"moneda" : "bolivar", "ISO" : "VES"},
 "guayanas" : {"moneda":"dolar guayanes", "ISO" : "GYD"},
