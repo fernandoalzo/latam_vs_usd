@@ -20,9 +20,12 @@ info_paises = {
 }
 
 const yahoofinanceapi = "XWdDhn1dp339zhlY2bwel69dTqdOjVeG65TcWxte"
+const yahoofinanceapi2 = "pfUEievb5D5z0H55oD6gR35RhoUC8o8Z5xchq9Re"
+const yahoofinanceapi3 = "K68YKlWDKH64syUVlqTlhzLvS8Gf28b7a13ZSZsj"
+
 const headers_ = {
     "accept": "application/json",
-    "X-API-KEY": yahoofinanceapi
+    "X-API-KEY": yahoofinanceapi3
 }
 
 async function get_instrument_info(endPoint_url) {
@@ -32,9 +35,10 @@ async function get_instrument_info(endPoint_url) {
             headers: headers_
         })
         if (response.status == 200) {
-            console.log(response.status)
             const data = response.json()
             return data
+        } else if (response.status == 429) {
+            console.log("Hacen falta licencias para funcionar")
         } else {
             console.log("Ocurrrio un error realizando la consulta a la API")
             console.log("Codigo de la solicitud: " + response.status)
@@ -46,11 +50,11 @@ async function get_instrument_info(endPoint_url) {
 }
 
 function get_info_price_by_symbol(info_from_api) {
-    // precio = info_from_api["quoteResponse"]["result"][0]["regularMarketPrice"]
+    precio = info_from_api["quoteResponse"]["result"][0]["regularMarketPrice"]
     ask = info_from_api["quoteResponse"]["result"][0]["ask"]
     bid = info_from_api["quoteResponse"]["result"][0]["bid"]
     info_precio = {
-        // "precio" : precio,
+        "precio" : precio,
         "ask" : ask,
         "bid" : bid
     }
@@ -85,7 +89,7 @@ function crear_grafico(fechas, precios, pais) {
     const $grafica = document.querySelector(`#chart_${pais}`)
     const labels = fechas
     const datos = {
-        label: "Peso Colombiano Vs USD ultimos 90 dias",
+        label: `Moneda de ${pais} Vs USD ultimos 120 dias`,
         data: precios,
         borderColor: 'rgba(0, 0, 0, 1)',
         borderWidth: 3,
@@ -161,8 +165,7 @@ function crear_pais(info_paises){
         canvas.style.ba
         div4.append(canvas)
         h1 = document.createElement("h1")
-        precio = document.createTextNode("$Precio")
-        h1.append(precio)
+        h1.setAttribute("id", `precio_${pais}`)
         div4.append(h1)
 
         link = document.createElement("a")
@@ -194,8 +197,12 @@ async function main() {
         // data by symbol
         endpoint_info_by_symbol = await get_instrument_info(`https://yfapi.net/v6/finance/quote?region=US&lang=en&symbols=USD${iso_symbol}%3DX`)
         info_recio = get_info_price_by_symbol(endpoint_info_by_symbol)
-        console.log(info_recio)
-
+        //set proce into HTML
+        precio_actual = info_recio["precio"]
+        h1_precio = document.querySelector(`#precio_${pais}`)
+        precio = document.createTextNode(precio_actual)
+        h1_precio.append(precio)
+        //Crear graficos
         crear_grafico(historical_data["fechas"], historical_data["precios"], pais)
     }
 }
