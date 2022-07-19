@@ -25,7 +25,7 @@ const yahoofinanceapi3 = "K68YKlWDKH64syUVlqTlhzLvS8Gf28b7a13ZSZsj"
 
 const headers_ = {
     "accept": "application/json",
-    "X-API-KEY": yahoofinanceapi
+    "X-API-KEY": yahoofinanceapi2
 }
 
 async function get_instrument_info(endPoint_url) {
