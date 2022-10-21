@@ -19,7 +19,7 @@ info_paises = {
     "uruguay": { "moneda": "peso", "ISO": "UYU" }
 }
 
-const yahoofinanceapi = "XWdDhn1dp339zhlY2bwel69dTqdOjVeG65TcWxte"
+const yahoofinanceapi = "PuE7Rqe48MnVsysW7mxI5CJupd4afqGL0cJqM8i0"
 const yahoofinanceapi2 = "pfUEievb5D5z0H55oD6gR35RhoUC8o8Z5xchq9Re"
 const yahoofinanceapi3 = "K68YKlWDKH64syUVlqTlhzLvS8Gf28b7a13ZSZsj"
 
@@ -29,6 +29,9 @@ const headers_ = {
 }
 
 async function get_instrument_info(endPoint_url) {
+    console.log("####################################")
+    console.log(endPoint_url)
+    console.log("####################################")
     try {
         const response = await fetch(endPoint_url, {
             method: "GET",
@@ -85,11 +88,11 @@ function convert_timstamp_to_date_format(list_timestamp) {
     return lista_de_fechas
 }
 
-function crear_grafico(fechas, precios, pais) {
+function crear_grafico(fechas, precios, pais, dias) {
     const $grafica = document.querySelector(`#chart_${pais}`)
     const labels = fechas
     const datos = {
-        label: `Moneda de ${pais} Vs USD ultimos 120 dias`,
+        label: `Moneda de ${pais} Vs USD ultimos ${dias} dias`,
         data: precios,
         borderColor: 'rgba(0, 0, 0, 1)',
         borderWidth: 3,
@@ -190,8 +193,9 @@ async function main() {
     crear_pais(info_paises)
     for (pais in info_paises){
         iso_symbol = info_paises[`${pais}`]["ISO"]
+        const dias = 60
         // historical data
-        endpoint_historical_price = `https://yfapi.net/v8/finance/chart/USD${iso_symbol}%3DX?range=120d&region=US&interval=1d&lang=en&events=div%2Csplit`
+        endpoint_historical_price = `https://yfapi.net/v8/finance/chart/USD${iso_symbol}%3DX?range=${dias}d&region=US&interval=1d&lang=en&events=div%2Csplit`
         const historical_price = await get_instrument_info(endpoint_historical_price)
         const historical_data = get_historical_price(historical_price)
         // data by symbol
@@ -203,7 +207,7 @@ async function main() {
         precio = document.createTextNode(precio_actual)
         h1_precio.append(precio)
         //Crear graficos
-        crear_grafico(historical_data["fechas"], historical_data["precios"], pais)
+        crear_grafico(historical_data["fechas"], historical_data["precios"], pais, dias)
     }
 }
 main()
