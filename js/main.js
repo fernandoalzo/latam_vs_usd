@@ -20,8 +20,6 @@ info_paises = {
 }
 
 const yahoofinanceapi = "PuE7Rqe48MnVsysW7mxI5CJupd4afqGL0cJqM8i0"
-const yahoofinanceapi2 = "pfUEievb5D5z0H55oD6gR35RhoUC8o8Z5xchq9Re"
-const yahoofinanceapi3 = "K68YKlWDKH64syUVlqTlhzLvS8Gf28b7a13ZSZsj"
 
 const headers_ = {
     "accept": "application/json",
