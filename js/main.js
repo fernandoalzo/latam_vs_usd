@@ -19,8 +19,9 @@ info_paises = {
     "uruguay": { "moneda": "peso", "ISO": "UYU" }
 }
 
-const yahoofinanceapi = "PuE7Rqe48MnVsysW7mxI5CJupd4afqGL0cJqM8i0"
-const yahoofinanceapi2 = "sdcyIni7kuaucmyJUJkYW55n6ilQL2306XYkXjPU"
+// const yahoofinanceapi = "PuE7Rqe48MnVsysW7mxI5CJupd4afqGL0cJqM8i0"
+// const yahoofinanceapi = "sdcyIni7kuaucmyJUJkYW55n6ilQL2306XYkXjPU"
+const yahoofinanceapi = "IQBxSohM1T7AnrIu01RLP1RPlgacbJgT49ZeW0gn"
 
 const headers_ = {
     "accept": "application/json",
@@ -53,19 +54,19 @@ async function get_instrument_info(endPoint_url) {
     }
 }
 
-function get_info_price_by_symbol(info_from_api) {
-    precio = info_from_api["quoteResponse"]["result"][0]["regularMarketPrice"]
-    ask = info_from_api["quoteResponse"]["result"][0]["ask"]
-    bid = info_from_api["quoteResponse"]["result"][0]["bid"]
-    info_precio = {
-        "precio" : precio,
-        "ask" : ask,
-        "bid" : bid
-    }
-    return info_precio
-}
+// function get_info_price_by_symbol(info_from_api) {
+//     precio = info_from_api["quoteResponse"]["result"][0]["regularMarketPrice"]
+//     ask = info_from_api["quoteResponse"]["result"][0]["ask"]
+//     bid = info_from_api["quoteResponse"]["result"][0]["bid"]
+//     info_precio = {
+//         "precio" : precio,
+//         "ask" : ask,
+//         "bid" : bid
+//     }
+//     return info_precio
+// }
 
-function get_historical_price(info_from_api) {
+function get_historical_price(info_from_api) {    
     const precios = info_from_api["chart"]["result"][0]["indicators"]["quote"][0]["close"]
     const timestamp = info_from_api["chart"]["result"][0]["timestamp"]
     const fechas = convert_timstamp_to_date_format(timestamp)
@@ -163,14 +164,21 @@ function crear_pais(info_paises){
         div3.append(h4)
 
         div4 = document.createElement("div")
+        h2_precio = document.createElement("h2")
+        h2_precio.setAttribute("id", `precio_${pais}`)
+        div4.append(h2_precio)
+
         div4.setAttribute("class", "card-body")
         canvas = document.createElement("canvas")
         canvas.setAttribute("id", `chart_${pais}`)
         canvas.style.ba
-        div4.append(canvas)
-        h1 = document.createElement("h1")
-        h1.setAttribute("id", `precio_${pais}`)
-        div4.append(h1)
+        div4.append(canvas)       
+
+
+        h3_apreciacion_value = document.createElement("h3")
+        // h2_apreciacion_lable = ""
+        h3_apreciacion_value.setAttribute("id", `apreciacion_price_${pais}`)
+        div4.append(h3_apreciacion_value)
 
         link = document.createElement("a")
         link.setAttribute("href", `https://finance.yahoo.com/quote/${iso}=X/`)
@@ -189,7 +197,6 @@ function crear_pais(info_paises){
     }
 
 }
-
 async function main() {
     crear_pais(info_paises)
     for (pais in info_paises){
@@ -199,14 +206,22 @@ async function main() {
         endpoint_historical_price = `https://yfapi.net/v8/finance/chart/USD${iso_symbol}%3DX?range=${dias}d&region=US&interval=1d&lang=en&events=div%2Csplit`
         const historical_price = await get_instrument_info(endpoint_historical_price)
         const historical_data = get_historical_price(historical_price)
-        // data by symbol
-        endpoint_info_by_symbol = await get_instrument_info(`https://yfapi.net/v6/finance/quote?region=US&lang=en&symbols=USD${iso_symbol}%3DX`)
-        info_recio = get_info_price_by_symbol(endpoint_info_by_symbol)
-        //set proce into HTML
-        precio_actual = info_recio["precio"]
+        // calcular la devauacion
+        const precios = historical_data["precios"]
+        const precio_inicial = Math.round(precios[0])
+        console.log(precio_inicial)
+        const precio_final = Math.round(precios[precios.length-1])
+        console.log(precio_final)
+        devaluacion = ((precio_inicial - precio_final) / precio_inicial) * 100
+        console.log(devaluacion)
+        //set price into HTML
+        // precio_actual = info_recio["precio"]
+        precio_actual = precio_final
         h1_precio = document.querySelector(`#precio_${pais}`)
-        precio = document.createTextNode(precio_actual)
-        h1_precio.append(precio)
+        h1_precio.append(document.createTextNode('Precio: ' + precio_actual))
+        //set apreciation into HTML
+        h1_precio = document.querySelector(`#apreciacion_price_${pais}`)
+        h1_precio.append(document.createTextNode(`${devaluacion.toFixed(1)}% `))
         //Crear graficos
         crear_grafico(historical_data["fechas"], historical_data["precios"], pais, dias)
     }
