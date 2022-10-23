@@ -40,6 +40,8 @@ async function get_instrument_info(endPoint_url) {
             return data
         } else if (response.status == 429) {
             console.log("Hacen falta licencias para funcionar")
+            $('#exampleModal').modal('show');
+
         } else {
             console.log("Ocurrrio un error realizando la consulta a la API")
             console.log("Codigo de la solicitud: " + response.status)
@@ -209,3 +211,7 @@ async function main() {
     }
 }
 main()
+
+window.onload = _=>{
+    console.log("mensaje para cada recarga")
+}
