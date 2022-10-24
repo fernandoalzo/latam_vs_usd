@@ -12,7 +12,6 @@ async function get_instrument_info(endPoint_url, apiKey) {
             const data = response.json()
             return data
         } else if (response.status == 429) {
-            console.log("Hacen falta licencias para funcionar")
             return 429
 
         } else {
@@ -191,13 +190,13 @@ async function main() {
         //endpoint historical data
         const endpoint_historical_price = `https://yfapi.net/v8/finance/chart/USD${iso_symbol}%3DX?range=${dias}d&region=US&interval=1d&lang=en&events=div%2Csplit`
         // get hispriacal data
-        const historical_price = await get_instrument_info(endpoint_historical_price, yahoofinanceapi)
+        var historical_price = await get_instrument_info(endpoint_historical_price, yahoofinanceapi)
         if (historical_price === 429) {
-            const historical_price = await get_instrument_info(endpoint_historical_price, yahoofinanceapi1)
+            var historical_price = await get_instrument_info(endpoint_historical_price, yahoofinanceapi1)
             if (historical_price === 429) {
-                const historical_price = await get_instrument_info(endpoint_historical_price, yahoofinanceapi2)
+                var historical_price = await get_instrument_info(endpoint_historical_price, yahoofinanceapi2)
                 if (historical_price === 429) {
-                    const historical_price = await get_instrument_info(endpoint_historical_price, yahoofinanceapi3)
+                    var historical_price = await get_instrument_info(endpoint_historical_price, yahoofinanceapi3)
                     if (historical_price === 429) {
                         $('#exampleModal').modal('show');
                         break
