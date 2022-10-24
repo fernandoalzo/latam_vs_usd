@@ -25,18 +25,6 @@ async function get_instrument_info(endPoint_url, apiKey) {
     }
 }
 
-// function get_info_price_by_symbol(info_from_api) {
-//     precio = info_from_api["quoteResponse"]["result"][0]["regularMarketPrice"]
-//     ask = info_from_api["quoteResponse"]["result"][0]["ask"]
-//     bid = info_from_api["quoteResponse"]["result"][0]["bid"]
-//     info_precio = {
-//         "precio" : precio,
-//         "ask" : ask,
-//         "bid" : bid
-//     }
-//     return info_precio
-// }
-
 function get_historical_price(info_from_api) {
     const precios = info_from_api["chart"]["result"][0]["indicators"]["quote"][0]["close"]
     const timestamp = info_from_api["chart"]["result"][0]["timestamp"]
